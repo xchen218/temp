@@ -23,7 +23,7 @@ extern unsigned long rotate(unsigned long val, unsigned long num, unsigned long 
     highaux = (val-low)>>(64-num);
         return lowaux+highaux;
     }
-}
+}*/
 
 int main(){
     unsigned long val, num, direction;

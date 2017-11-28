@@ -7,20 +7,20 @@ mov    rbp,rsp
 mov    [rbp-0x38],rdi
 mov    [rbp-0x40],rsi
 mov    [rbp-0x48],rdx
-and    [rbp-0x40],0x3f
-mov    [rbp-0x10],0x0
-mov    [rbp-0x28],0x0
-mov    [rbp-0x20],0x1
-mov    [rbp-0x8],0x1
-cmp    [rbp-0x48],0x0
+and    QWORD PTR [rbp-0x40],63	#10
+mov    QWORD PTR [rbp-0x10],0	#11
+mov    QWORD PTR [rbp-0x28],0	#12
+mov    QWORD PTR [rbp-0x20],1	#13
+mov    QWORD PTR [rbp-0x8],1	#14
+cmp    QWORD PTR [rbp-0x48],0	#15
 jne    left
-mov    [rbp-0x18],0x0
+mov    QWORD PTR [rbp-0x18],0	#17
 jmp    getlow
 start:
 mov    rax,[rbp-0x20]
 add    [rbp-0x28],rax
-shl    [rbp-0x20],1
-add    [rbp-0x18],0x1
+shl    QWORD PTR [rbp-0x20],1
+add    QWORD PTR [rbp-0x18],1	#23
 getlow:
 mov    rax,[rbp-0x18]
 cmp    rax,[rbp-0x40]
@@ -47,15 +47,15 @@ mov    rax,[rbp-0x8]
 add    rax,rdx
 jmp    return
 left:
-cmp    [rbp-0x48],0x1
+cmp    QWORD PTR [rbp-0x48],1	#50
 jne    return
-mov    [rbp-0x18],0x0
+mov    QWORD PTR [rbp-0x18],0	#52
 jmp    inverse
 right:
 mov    rax,[rbp-0x20]
 add    [rbp-0x28],rax
-shl    [rbp-0x20],1
-add    [rbp-0x18],0x1
+shl    QWORD PTR [rbp-0x20],1	#57
+add    QWORD PTR [rbp-0x18],1	#58
 inverse:
 mov    rax,0x40
 sub    rax,[rbp-0x40]
